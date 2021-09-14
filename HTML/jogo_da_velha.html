@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="CSS/tema_inicial/jogo_da_velha.css" type="text/css" rel="stylesheet">
+    <script src="JS/react.production.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="JS/react-dom.production.min.js" type="text/javascript" charset="utf-8"></script>
+    <title>Jogo da Velha</title>
+  </head>
+  <body>
+    <div id="div_tronco">
+      <div id="div_modelos" class="tag_oculta">
+        <div id="div_jogo_da_velha">
+          <div id="div_titulo_do_jogo_da_velha">
+            <span id="span_titulo_do_jogo_da_velha">Jogo da velha</span>
+          </div>
+          <div id="div_instrucao_do_jogo_da_velha">
+            <span id="span_turno_do_jogo_da_velha"></span>
+            <br/>
+            <span id="span_instrucao_do_jogo_da_velha"></span>
+          </div>
+          <div id="div_painel_do_jogo_da_velha">
+          </div>
+          <div id="div_opcoes_do_jogo_da_velha">
+            <div id="div_opcoes_de_historico">
+              <div id="div_instrucao_das_opcoes_de_historico">
+                <span id="span_instrucao_das_opcoes_de_historico">Voltar para:</span>
+              </div>
+              <div id="div_lista_de_opcoes_de_historico">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="div_jogos">
+        <script src="JS/jogo_da_velha/jogo_da_velha_html_separado.js" 
+                type="text/javascript" charset="utf-8"></script>
+      </div>
+    </div>
+    <div id="div_rodape">
+      <div id="div_autor_do_sistema">
+        <span>Este sistema foi feito por Rodrigo Diniz da Silva.</span>
+      </div>
+      <div id="div_tecnologias_do_sistema">
+        <span>Este sistema usa React.</span>
+      </div>
+    </div>
+  </body>
+</html>

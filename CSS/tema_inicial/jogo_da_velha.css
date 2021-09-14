@@ -1,0 +1,112 @@
+body{
+  margin: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #F0F0FF;
+  color: #404070;
+  font-family: Verdana, Tahoma, Times New Roman, serif;
+  font-size: 12pt;
+}
+
+#div_jogo_da_velha{
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid #404070;
+  min-width: calc(450px - 2px);
+  max-width: calc(450px - 2px);
+  min-height: calc(450px - 2px);
+  max-height: calc(450px - 2px);
+  box-shadow: 4px 4px 4px 1px #DDD;
+}
+#div_titulo_do_jogo_da_velha{
+  padding-top: 12px;
+  min-height: calc(62px - 12px);
+  max-height: calc(62px - 12px);
+  text-align: center;
+}
+#span_titulo_do_jogo_da_velha{
+  font-size: 28pt;
+}
+#div_instrucao_do_jogo_da_velha{
+  padding-top: 30px;
+  min-height: calc(130px - 30px);
+  max-height: calc(130px - 30px);
+  text-align: center;
+}
+#div_painel_do_jogo_da_velha{
+  margin-right: auto;
+  margin-left: auto;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  min-width: calc(154px - 1px);
+  max-width: calc(154px - 1px);
+  min-height: calc(154px - 1px);
+  max-height: calc(154px - 1px);
+  overflow: hidden;
+}
+.celula_do_jogo_da_velha{
+  float: left;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+  min-width: calc(51px - 1px);
+  max-width: calc(51px - 1px);
+  min-height: calc(51px - 1px);
+  max-height: calc(51px - 1px);
+  cursor: pointer;
+}
+.cruz_do_jogo_da_velha{
+  margin-top: -2px;
+  font-size: 32pt;
+  text-align: center;
+  cursor: default;
+}
+.circulo_do_jogo_da_velha{
+  margin-top: -2px;
+  font-size: 32pt;
+  text-align: center;
+  cursor: default;
+}
+#div_opcoes_do_jogo_da_velha{
+  padding: 12px 20px 8px 20px;
+}
+#div_lista_de_opcoes_de_historico{
+  margin-top: 4px;
+  min-width: 300px;
+  max-width: 300px;
+}
+.opcao_do_historico_do_jogo_da_velha{
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: top;
+}
+.opcao_do_historico_do_jogo_da_velha,
+.opcao_do_historico_do_jogo_da_velha:visited,
+.opcao_do_historico_do_jogo_da_velha:hover{
+  color: #5050C0;
+  cursor: pointer;
+}
+.opcao_do_historico_do_jogo_da_velha:hover{
+  text-decoration: underline;
+}
+.tag_oculta{
+  display: none;
+}
+
+#div_rodape{
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid #404070;
+  padding: 30px 20px;
+  min-width: calc(800px - 2px - 40px);
+  max-width: calc(800px - 2px - 40px);
+  color: #282860;
+  font-size: 11pt;
+  box-shadow: 4px 4px 4px 1px #DDD;
+}
+#div_autor_do_sistema{
+  text-align: center;
+}
+#div_tecnologias_do_sistema{
+  text-align: center;
+}
