@@ -394,5 +394,5 @@ class ComponenteJogoDaVelha extends React.Component{
 
 ReactDOM.render(
   React.createElement(ComponenteJogoDaVelha, null, null),
-  document.getElementById("div_jogos")
+  document.getElementById("div_componente_jogo_da_velha")
 );
