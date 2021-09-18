@@ -21,7 +21,7 @@ class ComponenteJogoDaVelha extends React.Component{
   }
   
   render(){
-    return this.html_para_react(this.state.elemento_modelo);
+    return ["\n", this.html_para_react(this.state.elemento_modelo)];
   }
   
   html_para_react(elemento){
@@ -66,7 +66,11 @@ class ComponenteJogoDaVelha extends React.Component{
       let tags_filhas = elemento.children;
       for(let i = 0; i < tags_filhas.length; i++){
         let tag = tags_filhas[i];
+        conteudos.push("\n");
         conteudos.push(this.html_para_react(tag));
+        if(i == tags_filhas.length - 1){
+          conteudos.push("\n");
+        }
       }
       /* No HTML faça o texto ser sempre "filho único" de alguma tag, exemplo: <span>Texto</span> */
       if(conteudos.length === 0){
@@ -168,7 +172,17 @@ class ComponenteJogoDaVelha extends React.Component{
       celulas_do_painel[turno.jogada_anterior.local - 1] = elemento_react;
     }
     
-    return celulas_do_painel;
+    /* Acrescentando quebras de linha para deixar o HTML mais bonito */
+    let array_conteudos = Array(celulas_do_painel.length * 2 + 1);
+    for(let i = 0; i < array_conteudos.length; i++){
+      if(i % 2 === 0){
+        array_conteudos[i] = "\n";
+      }else{
+        array_conteudos[i] = celulas_do_painel[(i - 1) / 2];
+      }
+    }
+    
+    return array_conteudos;
   }
   
   realizar_jogada(local_da_jogada){
