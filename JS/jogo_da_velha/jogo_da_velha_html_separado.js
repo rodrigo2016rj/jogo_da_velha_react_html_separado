@@ -25,7 +25,7 @@ class ComponenteJogoDaVelha extends React.Component{
   }
   
   html_para_react(elemento){
-    let nome_da_tag = elemento.tagName;
+    let nome_da_tag = elemento.tagName.toLowerCase();
     
     let array_atributos = elemento.attributes;
     let array_melhorado = Array();
@@ -74,7 +74,7 @@ class ComponenteJogoDaVelha extends React.Component{
       }
       /* No HTML faça o texto ser sempre "filho único" de alguma tag, exemplo: <span>Texto</span> */
       if(conteudos.length === 0){
-        conteudos = elemento.innerText;
+        conteudos = elemento.innerText !== "" ? elemento.innerText : null;
       }
       
       elemento_react = React.createElement(nome_da_tag, array_atributos, conteudos);
