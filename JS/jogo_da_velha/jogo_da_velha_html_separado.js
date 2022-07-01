@@ -1,11 +1,11 @@
 class ComponenteJogoDaVelha extends React.Component{
+  chave_do_react;
+  
   constructor(props){
     super(props);
     
-    const elemento = document.getElementById("div_jogo_da_velha");
-    
     this.state = {
-      elemento_modelo: elemento.cloneNode(true),
+      elemento_modelo: props.elemento.cloneNode(true),
       historico_de_turnos: [
         {
           numero: 1,
@@ -17,10 +17,11 @@ class ComponenteJogoDaVelha extends React.Component{
       fim_de_jogo: false
     }
     
-    elemento.remove();
+    props.elemento.remove();
   }
   
   render(){
+    this.chave_do_react = 1;
     return ["\n", this.html_para_react(this.state.elemento_modelo)];
   }
   
@@ -32,10 +33,17 @@ class ComponenteJogoDaVelha extends React.Component{
     if(typeof array_atributos !== "undefined"){
       for(let i = 0; i < array_atributos.length; i++){
         let atributo = array_atributos[i];
-        array_melhorado[atributo.nodeName] = atributo.nodeValue;
+        if(atributo.nodeName === "class"){
+          array_melhorado["className"] = atributo.nodeValue;
+        }else{
+          array_melhorado[atributo.nodeName] = atributo.nodeValue;
+        }
       }
     }
     array_atributos = array_melhorado;
+    
+    array_atributos["key"] = this.chave_do_react; //React precisa disso.
+    this.chave_do_react++;
     
     let conteudo_dinamico = "";
     if(typeof array_atributos["id"] !== "undefined"){
@@ -50,7 +58,7 @@ class ComponenteJogoDaVelha extends React.Component{
           conteudo_dinamico = this.mostrar_celulas_do_painel();
         break;
         case "div_opcoes_de_historico":
-          array_atributos["class"] = this.mostrar_div_opcoes_de_historico();
+          array_atributos["className"] = this.mostrar_div_opcoes_de_historico();
         break;
         case "div_lista_de_opcoes_de_historico":
           conteudo_dinamico = this.mostrar_lista_de_opcoes_de_historico();
@@ -118,6 +126,7 @@ class ComponenteJogoDaVelha extends React.Component{
       var elemento_react = React.createElement(
         "div", 
         {
+          key: "celula_do_jogo_da_velha_" + i,
           className: "celula_do_jogo_da_velha",
           onClick: () => this.realizar_jogada(i)
         }, 
@@ -141,11 +150,13 @@ class ComponenteJogoDaVelha extends React.Component{
           var elemento_react = React.createElement(
             "div", 
             {
+              key: "celula_com_cruz_do_jogo_da_velha_" + i,
               className: "celula_do_jogo_da_velha"
             }, 
             React.createElement(
               "div", 
               {
+                key: "marca_de_cruz_" + i,
                 className: "cruz_do_jogo_da_velha"
               }, 
               "X"
@@ -156,11 +167,13 @@ class ComponenteJogoDaVelha extends React.Component{
           var elemento_react = React.createElement(
             "div", 
             {
+              key: "celula_com_circulo_do_jogo_da_velha_" + i,
               className: "celula_do_jogo_da_velha"
             }, 
             React.createElement(
               "div", 
               {
+                key: "marca_de_circulo_" + i,
                 className: "circulo_do_jogo_da_velha"
               }, 
               "O"
@@ -375,6 +388,7 @@ class ComponenteJogoDaVelha extends React.Component{
       const elemento_react = React.createElement(
         "a",
         {
+          key: "opcao_do_historico_do_jogo_da_velha_" + numero_do_turno,
           className: "opcao_do_historico_do_jogo_da_velha",
           onClick: () => this.carregar_turno_do_historico(numero_do_turno)
         },
@@ -406,7 +420,13 @@ class ComponenteJogoDaVelha extends React.Component{
   
 }
 
+const elemento = document.getElementById("div_jogo_da_velha");
+
 ReactDOM.render(
-  React.createElement(ComponenteJogoDaVelha, null, null),
+  React.createElement(
+    React.StrictMode,
+    null,
+    React.createElement(ComponenteJogoDaVelha, {elemento: elemento}, null)
+  ),
   document.getElementById("div_componente_jogo_da_velha")
 );
